@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { appendFile, mkdir, writeFile } from 'fs/promises';
-import path from 'path';
-import os from 'os';
+import { supabase } from '@/lib/supabase/client';
 
-const LOG_FILE = path.join(os.tmpdir(), 'comunidad-integral-candidatos.jsonl');
-const CV_DIR = path.join(os.tmpdir(), 'comunidad-integral-cvs');
+const CV_BUCKET = 'cvs';
 const MAX_SIZE = 5 * 1024 * 1024;
 
 export async function POST(request: NextRequest) {
@@ -32,24 +29,35 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'El CV no puede superar los 5 MB.' }, { status: 400 });
   }
 
-  await mkdir(CV_DIR, { recursive: true });
   const cvFilename = `${Date.now()}-${cv.name}`;
-  const cvPath = path.join(CV_DIR, cvFilename);
-  await writeFile(cvPath, Buffer.from(await cv.arrayBuffer()));
 
-  const candidato = {
-    nombre, email, telefono, puesto, experiencia, zona, disponibilidad, descripcion,
-    cv: { nombre: cv.name, tamano: cv.size, rutaTemporal: cvPath },
-    creadoEn: new Date().toISOString(),
-  };
+  const { data: uploadData, error: uploadError } = await supabase.storage
+    .from(CV_BUCKET)
+    .upload(cvFilename, cv, { contentType: cv.type || 'application/octet-stream' });
 
-  console.log('[candidato]', candidato);
-
-  try {
-    await appendFile(LOG_FILE, `${JSON.stringify(candidato)}\n`, 'utf-8');
-  } catch (error) {
-    console.error('No se pudo escribir el archivo temporal de candidatos', error);
+  if (uploadError) {
+    console.error('No se pudo subir el CV a Supabase Storage', uploadError);
+    return NextResponse.json({ error: 'No se pudo subir el CV.' }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true });
+  const candidato = {
+    nombre,
+    email,
+    telefono,
+    puesto,
+    experiencia,
+    zona,
+    disponibilidad,
+    descripcion,
+    cv_url: uploadData.path,
+  };
+
+  const { data, error } = await supabase.from('candidatos').insert(candidato).select('id').single();
+
+  if (error) {
+    console.error('No se pudo guardar el candidato en Supabase', error);
+    return NextResponse.json({ error: 'No se pudo guardar tu candidatura.' }, { status: 500 });
+  }
+
+  return NextResponse.json({ ok: true, id: data.id });
 }

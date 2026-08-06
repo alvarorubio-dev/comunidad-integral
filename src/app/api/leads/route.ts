@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { appendFile } from 'fs/promises';
-import path from 'path';
-import os from 'os';
+import { supabase } from '@/lib/supabase/client';
 import { LeadPayload } from '@/types/lead';
-
-const LOG_FILE = path.join(os.tmpdir(), 'comunidad-integral-leads.jsonl');
 
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as LeadPayload;
@@ -24,16 +20,14 @@ export async function POST(request: NextRequest) {
     descripcion: body.descripcion ?? null,
     urgencia: body.urgencia ?? 'media',
     fuente: body.fuente ?? 'web',
-    creadoEn: new Date().toISOString(),
   };
 
-  console.log('[lead]', lead);
+  const { data, error } = await supabase.from('leads').insert(lead).select('id').single();
 
-  try {
-    await appendFile(LOG_FILE, `${JSON.stringify(lead)}\n`, 'utf-8');
-  } catch (error) {
-    console.error('No se pudo escribir el archivo temporal de leads', error);
+  if (error) {
+    console.error('No se pudo guardar el lead en Supabase', error);
+    return NextResponse.json({ error: 'No se pudo guardar la solicitud.' }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, id: data.id });
 }
