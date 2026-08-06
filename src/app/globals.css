@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Tinta */
+  --color-ink: #1C2620;
+  --color-ink-soft: #4A5049;
+
+  /* Verde puerta - dominante */
+  --color-verde-900: #141F19;
+  --color-verde-800: #1B2A21;
+  --color-verde-700: #2B4034;
+  --color-verde-600: #3A5544;
+  --color-verde-500: #4C6E58;
+
+  /* Crema - solo tarjetas/contenido, nunca fondo general */
+  --color-crema-50: #FBF8F2;
+  --color-crema-100: #F6F1E7;
+  --color-crema-200: #EDE4D3;
+
+  /* Oxido - acento de accion, nunca terracota generico */
+  --color-oxido-500: #A6432E;
+  --color-oxido-600: #8A3625;
+  --color-oxido-700: #6E2A1D;
+
+  /* Laton - divisores y detalles */
+  --color-laton-400: #C9A055;
+  --color-laton-500: #B98A3E;
+  --color-laton-600: #96702F;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-crema-50);
+  color: var(--color-ink);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-oxido-500);
+  outline-offset: 2px;
+}
+
+/* Patron de azulejo hidraulico - firma visual del hero */
+.tile-pattern {
+  background-color: var(--color-verde-800);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%233A5544' stroke-width='1'%3E%3Cpath d='M36 0 L72 36 L36 72 L0 36 Z'/%3E%3Ccircle cx='36' cy='36' r='14'/%3E%3Cpath d='M36 22 L50 36 L36 50 L22 36 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
+}
+
+/* Divisor de laton entre secciones */
+.laton-rule {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-laton-500) 15%, var(--color-laton-500) 85%, transparent);
+}
+
+/* Papel rayado para libro de actas */
+.libro-actas {
+  background-image: repeating-linear-gradient(
+    var(--color-crema-50) 0px,
+    var(--color-crema-50) 27px,
+    var(--color-crema-200) 28px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
