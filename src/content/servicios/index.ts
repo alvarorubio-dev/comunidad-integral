@@ -6,18 +6,9 @@ import { jardineriaComunidades } from './jardineria-comunidades';
 import { mantenimientoPiscinas } from './mantenimiento-piscinas';
 
 export const SERVICIOS = [
-  limpiezaComunidades,
-  mantenimientoComunidades,
-  conserjeriaComunidades,
-  reformasComunidades,
-  jardineriaComunidades,
-  mantenimientoPiscinas,
+  limpiezaComunidades, mantenimientoComunidades, conserjeriaComunidades,
+  reformasComunidades, jardineriaComunidades, mantenimientoPiscinas,
 ] as const;
 
-export function getServicio(slug: string) {
-  return SERVICIOS.find((s) => s.slug === slug);
-}
-
-export function getServicioSlugs() {
-  return SERVICIOS.map((s) => s.slug);
-}
+export function getServicio(slug: string) { return SERVICIOS.find((s) => s.slug === slug); }
+export function getServicioSlugs() { return SERVICIOS.map((s) => s.slug); }

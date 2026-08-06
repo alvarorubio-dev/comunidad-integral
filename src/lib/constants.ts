@@ -9,7 +9,6 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: '/', label: 'Inicio' },
   { href: '/servicios/', label: 'Servicios' },
   { href: '/empleo/', label: 'Empleo' },
   { href: '/empresas/', label: 'Para empresas' },
