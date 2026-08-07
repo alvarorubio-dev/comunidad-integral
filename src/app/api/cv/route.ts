@@ -52,12 +52,15 @@ export async function POST(request: NextRequest) {
     cv_url: uploadData.path,
   };
 
-  const { data, error } = await supabase.from('candidatos').insert(candidato).select('id').single();
+  // Sin .select() a propósito: el rol anon no tiene permiso SELECT sobre candidatos
+  // (para que nadie pueda leer candidaturas ajenas desde el navegador). Encadenar
+  // .select('id') aquí falla con 42501 "permission denied for table candidatos".
+  const { error } = await supabase.from('candidatos').insert(candidato);
 
   if (error) {
     console.error('No se pudo guardar el candidato en Supabase', error);
     return NextResponse.json({ error: 'No se pudo guardar tu candidatura.' }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true, id: data.id });
+  return NextResponse.json({ ok: true });
 }
