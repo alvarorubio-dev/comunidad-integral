@@ -12,7 +12,12 @@ export const metadata: Metadata = {
   },
   description: SITE.description,
   verification: { google: SITE.googleVerification },
-  openGraph: { type: 'website', locale: 'es_ES', siteName: SITE.name },
+  openGraph: {
+    type: 'website',
+    locale: 'es_ES',
+    siteName: SITE.name,
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: SITE.name }],
+  },
   robots: {
     index: true, follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
