@@ -10,25 +10,26 @@ export function ContactForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus('submitting');
-    const form = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     const payload: LeadPayload = {
-      nombre: String(form.get('nombre') ?? ''),
-      email: String(form.get('email') ?? ''),
-      telefono: String(form.get('telefono') ?? '') || undefined,
-      descripcion: String(form.get('mensaje') ?? '') || undefined,
+      nombre: String(formData.get('nombre') ?? ''),
+      email: String(formData.get('email') ?? ''),
+      telefono: String(formData.get('telefono') ?? '') || undefined,
+      descripcion: String(formData.get('mensaje') ?? '') || undefined,
       fuente: 'contacto',
     };
 
     try {
-      const res = await fetch('/api/leads', {
+      const res = await fetch('/api/leads/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error();
       setStatus('success');
-      e.currentTarget.reset();
+      form.reset();
     } catch {
       setStatus('error');
     }

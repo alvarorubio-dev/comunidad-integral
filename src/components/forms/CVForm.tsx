@@ -18,7 +18,7 @@ export function CVForm() {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch('/api/cv', { method: 'POST', body: formData });
+      const res = await fetch('/api/cv/', { method: 'POST', body: formData });
       if (!res.ok) throw new Error();
       setStatus('success');
       form.reset();
