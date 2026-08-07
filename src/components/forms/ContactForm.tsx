@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { LeadPayload } from '@/types/lead';
 import { FormField, fieldInputClass } from './FormField';
+import { ConsentCheckbox } from './ConsentCheckbox';
 
 export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -61,6 +62,8 @@ export function ContactForm() {
       <FormField label="Mensaje" htmlFor="contacto-mensaje" required>
         <textarea id="contacto-mensaje" name="mensaje" rows={5} required className={fieldInputClass} placeholder="¿En qué podemos ayudarte?" />
       </FormField>
+
+      <ConsentCheckbox id="contacto-consentimiento" />
 
       {status === 'error' && (
         <p className="text-base text-[var(--color-oxido-600)]">No hemos podido enviar tu mensaje. Inténtalo de nuevo.</p>

@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Comunidad Integral',
   url: 'https://comunidadintegral.com',
   description: 'Servicios integrales de mantenimiento, limpieza y conserjería para comunidades de vecinos en España.',
-  phone: '+34 605 20 18 72',
+  phone: '+34 647 165 231',
   email: 'servicios@comunidadintegral.com',
   address: 'Avd. de Nísperos 25, 28350 Ciempozuelos, Madrid',
   googleVerification: 'M6h6EK7Z9tk7-x1cFqpvIWtl5Yt3RVHIDhpOeEaBRxE',

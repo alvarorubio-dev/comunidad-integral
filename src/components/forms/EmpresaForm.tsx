@@ -5,6 +5,7 @@ import { SERVICIOS } from '@/content/servicios';
 import { CIUDADES } from '@/content/ciudades';
 import { EmpresaPayload } from '@/types/empresa';
 import { FormField, fieldInputClass } from './FormField';
+import { ConsentCheckbox } from './ConsentCheckbox';
 
 interface FormState {
   nombre: string;
@@ -14,11 +15,13 @@ interface FormState {
   servicios: string[];
   ciudades: string[];
   descripcion: string;
+  consentimiento: boolean;
 }
 
 const INITIAL_STATE: FormState = {
   nombre: '', cif: '', email: '', telefono: '',
   servicios: [], ciudades: [], descripcion: '',
+  consentimiento: false,
 };
 
 export function EmpresaForm() {
@@ -45,7 +48,8 @@ export function EmpresaForm() {
       data.nombre.trim() !== '' &&
       /\S+@\S+\.\S+/.test(data.email) &&
       data.servicios.length > 0 &&
-      data.ciudades.length > 0
+      data.ciudades.length > 0 &&
+      data.consentimiento
     );
   }
 
@@ -150,8 +154,14 @@ export function EmpresaForm() {
           placeholder="Años de experiencia, tamaño del equipo, certificaciones..." />
       </FormField>
 
+      <ConsentCheckbox
+        id="empresa-consentimiento"
+        checked={data.consentimiento}
+        onChange={(checked) => setData((d) => ({ ...d, consentimiento: checked }))}
+      />
+
       {showError && (
-        <p className="text-base text-[var(--color-oxido-600)]">Completa los campos obligatorios: nombre, email, al menos un servicio y una ciudad.</p>
+        <p className="text-base text-[var(--color-oxido-600)]">Completa los campos obligatorios: nombre, email, al menos un servicio, una ciudad, y acepta la Política de Privacidad.</p>
       )}
       {status === 'error' && (
         <p className="text-base text-[var(--color-oxido-600)]">No hemos podido enviar el registro. Inténtalo de nuevo.</p>

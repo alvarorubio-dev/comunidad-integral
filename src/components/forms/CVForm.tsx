@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { SERVICIOS } from '@/content/servicios';
 import { CIUDADES } from '@/content/ciudades';
 import { FormField, fieldInputClass } from './FormField';
+import { ConsentCheckbox } from './ConsentCheckbox';
 
 const EXPERIENCIAS = ['Sin experiencia', 'Menos de 1 año', '1-3 años', '3-5 años', 'Más de 5 años'];
 const DISPONIBILIDADES = ['Inmediata', '1-2 semanas', '1 mes', 'A convenir'];
@@ -92,6 +93,8 @@ export function CVForm() {
         <input id="cv-archivo" name="cv" type="file" required accept=".pdf,.doc,.docx"
           className="w-full border border-[var(--color-crema-200)] bg-[var(--color-crema-50)] px-4 py-3 text-base text-[var(--color-ink-soft)] file:mr-4 file:border-0 file:bg-[var(--color-verde-700)] file:px-4 file:py-2 file:text-base file:font-medium file:text-[var(--color-crema-50)]" />
       </FormField>
+
+      <ConsentCheckbox id="cv-consentimiento" />
 
       {status === 'error' && (
         <p className="text-base text-[var(--color-oxido-600)]">No hemos podido enviar tu candidatura. Inténtalo de nuevo.</p>

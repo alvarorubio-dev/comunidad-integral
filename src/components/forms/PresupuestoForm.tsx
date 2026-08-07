@@ -5,6 +5,7 @@ import { SERVICIOS } from '@/content/servicios';
 import { CIUDADES } from '@/content/ciudades';
 import { LeadPayload } from '@/types/lead';
 import { FormField, fieldInputClass } from './FormField';
+import { ConsentCheckbox } from './ConsentCheckbox';
 
 const PASOS = [
   { n: '01', titulo: 'Contacto' },
@@ -28,12 +29,14 @@ interface FormState {
   servicios: string[];
   descripcion: string;
   urgencia: LeadPayload['urgencia'];
+  consentimiento: boolean;
 }
 
 const INITIAL_STATE: FormState = {
   nombre: '', email: '', telefono: '',
   comunidad: '', direccion: '', ciudad: '',
   servicios: [], descripcion: '', urgencia: 'media',
+  consentimiento: false,
 };
 
 export function PresupuestoForm() {
@@ -45,7 +48,7 @@ export function PresupuestoForm() {
   function isStepValid(s: number) {
     if (s === 0) return data.nombre.trim() !== '' && /\S+@\S+\.\S+/.test(data.email);
     if (s === 1) return data.comunidad.trim() !== '' && data.ciudad !== '';
-    if (s === 2) return data.servicios.length > 0;
+    if (s === 2) return data.servicios.length > 0 && data.consentimiento;
     return true;
   }
 
@@ -190,6 +193,12 @@ export function PresupuestoForm() {
               ))}
             </div>
           </fieldset>
+
+          <ConsentCheckbox
+            id="presupuesto-consentimiento"
+            checked={data.consentimiento}
+            onChange={(checked) => setData((d) => ({ ...d, consentimiento: checked }))}
+          />
         </div>
       )}
 
