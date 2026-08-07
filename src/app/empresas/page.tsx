@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { createMetadata } from '@/lib/seo/metadata';
-import { SITE } from '@/lib/constants';
+import { EmpresaForm } from '@/components/forms/EmpresaForm';
 
 export const metadata: Metadata = createMetadata({
   title: 'Para empresas — Recibe leads verificados',
@@ -27,8 +27,7 @@ export default function EmpresasPage() {
           <p className="mt-4 max-w-xl text-lg text-[var(--color-crema-200)]">
             Conectamos comunidades de vecinos con empresas verificadas de limpieza, mantenimiento, conserjería, reformas, jardinería y piscinas.
           </p>
-          <a href={`mailto:${SITE.email}?subject=${encodeURIComponent('Quiero unirme como empresa')}`}
-            target="_blank" rel="noopener noreferrer"
+          <a href="#registro"
             className="mt-8 inline-flex items-center gap-2 bg-[var(--color-oxido-500)] px-7 py-3.5 text-base font-medium text-[var(--color-crema-50)] hover:bg-[var(--color-oxido-600)]">
             Quiero recibir leads <span aria-hidden="true">→</span>
           </a>
@@ -49,15 +48,15 @@ export default function EmpresasPage() {
           ))}
         </div>
 
-        <section className="mt-16 bg-[var(--color-oxido-500)] p-10 text-center">
-          <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-crema-50)]">¿Tu empresa quiere formar parte de la red?</h2>
-          <p className="mt-3 text-base text-[var(--color-crema-100)]">Escríbenos y te damos acceso al registro de empresas.</p>
-          <a href={`mailto:${SITE.email}?subject=${encodeURIComponent('Quiero unirme como empresa')}`}
-            target="_blank" rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 bg-[var(--color-crema-50)] px-8 py-3.5 text-base font-medium text-[var(--color-oxido-600)]">
-            Contactar <span aria-hidden="true">→</span>
-          </a>
-        </section>
+        <div id="registro" className="mt-16 scroll-mt-8">
+          <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-ink)]">Registra tu empresa</h2>
+          <p className="mt-2 max-w-2xl text-base text-[var(--color-ink-soft)]">
+            Cuéntanos qué servicios ofreces y en qué ciudades trabajas. Revisamos cada registro manualmente antes de activarlo.
+          </p>
+          <div className="mt-6">
+            <EmpresaForm />
+          </div>
+        </div>
       </div>
     </>
   );
