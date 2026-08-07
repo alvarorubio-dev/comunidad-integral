@@ -5,6 +5,7 @@ import { CIUDADES } from '@/content/ciudades';
 import { createMetadata } from '@/lib/seo/metadata';
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/seo/schemas';
 import { SITE } from '@/lib/constants';
+import { FAQSection } from '@/components/servicios/FAQSection';
 
 interface Props { params: Promise<{ servicio: string }>; }
 
@@ -92,17 +93,7 @@ export default async function PillarPage({ params }: Props) {
           </div>
         </section>
 
-        <section className="mt-14">
-          <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-ink)]">Preguntas frecuentes</h2>
-          <div className="mt-6 space-y-3">
-            {servicio.faqs.map((faq) => (
-              <details key={faq.pregunta} className="group border border-[var(--color-crema-200)] p-4">
-                <summary className="cursor-pointer text-base font-medium text-[var(--color-ink)] group-open:mb-2">{faq.pregunta}</summary>
-                <p className="text-base text-[var(--color-ink-soft)]">{faq.respuesta}</p>
-              </details>
-            ))}
-          </div>
-        </section>
+        <FAQSection faqs={servicio.faqs} />
 
         <section className="mt-14">
           <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-ink)]">Otros servicios</h2>
