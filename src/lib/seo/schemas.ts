@@ -31,6 +31,16 @@ export function faqSchema(faqs: Array<{ pregunta: string; respuesta: string }>) 
     mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.pregunta, acceptedAnswer: { '@type': 'Answer', text: faq.respuesta } })),
   };
 }
+export function articleSchema(params: { title: string; description: string; datePublished: string; dateModified?: string; url: string; author?: string }) {
+  const { title, description, datePublished, dateModified, url, author } = params;
+  return {
+    '@context': 'https://schema.org', '@type': 'Article',
+    headline: title, description, datePublished, dateModified: dateModified ?? datePublished,
+    author: { '@type': 'Organization', name: author ?? SITE.name },
+    publisher: { '@type': 'Organization', name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/logo.svg` } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  };
+}
 export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
   return {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',

@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
       { source: '/blog-facility-services/', destination: '/blog/', permanent: true },
       { source: '/blog-facility-services/:slug/', destination: '/blog/:slug/', permanent: true },
       { source: '/contacto/', destination: '/contacto-mantenimiento-comunidades/', permanent: true },
+      { source: '/beneficios-riego-goteo-automatico/', destination: '/blog/mantenimiento-jardines-comunidades/', permanent: true },
+      { source: '/beneficios-empresa-servicios-integrales-mantenimiento-comunidades-madrid/', destination: '/blog/facility-services-madrid/', permanent: true },
+      { source: '/blog/beneficios-empresa-servicios-integrales-mantenimiento-comunidades-madrid/', destination: '/blog/facility-services-madrid/', permanent: true },
     ];
   },
 };

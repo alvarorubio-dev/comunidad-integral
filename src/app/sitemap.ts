@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { SERVICIOS } from '@/content/servicios';
 import { CIUDADES } from '@/content/ciudades';
+import { getBlogPosts } from '@/lib/blog';
 const BASE_URL = 'https://comunidadintegral.com';
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
@@ -16,5 +17,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const pillarPages: MetadataRoute.Sitemap = SERVICIOS.map((s) => ({ url: `${BASE_URL}/servicios/${s.slug}/`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.9 }));
   const cityPages: MetadataRoute.Sitemap = SERVICIOS.flatMap((s) => CIUDADES.map((c) => ({ url: `${BASE_URL}/servicios/${s.slug}/${c.slug}/`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.8 })));
-  return [...staticPages, ...pillarPages, ...cityPages];
+  const blogPages: MetadataRoute.Sitemap = getBlogPosts().map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}/`,
+    lastModified: new Date(post.frontmatter.lastUpdated ?? post.frontmatter.date).toISOString(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+  return [...staticPages, ...pillarPages, ...cityPages, ...blogPages];
 }
