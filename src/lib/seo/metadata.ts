@@ -5,7 +5,7 @@ export function createMetadata({ title, description, path, noIndex }: PageMetada
   const url = `${SITE.url}${path}`;
   const fullTitle = `${title} — ${SITE.name}`;
   return {
-    title: fullTitle, description, alternates: { canonical: url },
+    title, description, alternates: { canonical: url },
     openGraph: { title: fullTitle, description, url, siteName: SITE.name, locale: 'es_ES', type: 'website' },
     twitter: { card: 'summary_large_image', title: fullTitle, description },
     robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },

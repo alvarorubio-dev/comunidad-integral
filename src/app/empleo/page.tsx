@@ -9,12 +9,12 @@ export const metadata: Metadata = createMetadata({
 });
 
 const PUESTOS = [
-  { n: '01', puesto: 'Personal de limpieza', desc: 'Portales, escaleras, garajes y zonas comunes.' },
-  { n: '02', puesto: 'Mantenimiento y oficios varios', desc: 'Electricidad, fontanería y mantenimiento preventivo.' },
-  { n: '03', puesto: 'Conserjería', desc: 'Control de acceso, paquetería y atención a vecinos.' },
-  { n: '04', puesto: 'Jardinería', desc: 'Poda, riego y cuidado de zonas verdes comunitarias.' },
-  { n: '05', puesto: 'Socorrismo y mantenimiento de piscinas', desc: 'Tratamiento de agua y vigilancia en temporada.' },
-  { n: '06', puesto: 'Oficiales de reformas', desc: 'Fachadas, cubiertas e instalaciones de comunidades.' },
+  { n: '01', puesto: 'Personal de limpieza', desc: 'Portales, escaleras, garajes y zonas comunes.', href: '/servicios/limpieza-comunidades/' },
+  { n: '02', puesto: 'Mantenimiento y oficios varios', desc: 'Electricidad, fontanería y mantenimiento preventivo.', href: '/servicios/mantenimiento-comunidades/' },
+  { n: '03', puesto: 'Conserjería', desc: 'Control de acceso, paquetería y atención a vecinos.', href: '/servicios/conserjeria-comunidades/' },
+  { n: '04', puesto: 'Jardinería', desc: 'Poda, riego y cuidado de zonas verdes comunitarias.', href: '/servicios/jardineria-comunidades/' },
+  { n: '05', puesto: 'Socorrismo y mantenimiento de piscinas', desc: 'Tratamiento de agua y vigilancia en temporada.', href: '/servicios/mantenimiento-piscinas/' },
+  { n: '06', puesto: 'Oficiales de reformas', desc: 'Fachadas, cubiertas e instalaciones de comunidades.', href: '/servicios/reformas-comunidades/' },
 ];
 
 export default function EmpleoPage() {
@@ -37,15 +37,20 @@ export default function EmpleoPage() {
         <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-ink)]">Perfiles que buscamos</h2>
         <div className="mt-6 border-t border-[var(--color-crema-200)]">
           {PUESTOS.map((p) => (
-            <div key={p.n} className="flex gap-6 border-b border-[var(--color-crema-200)] py-5">
+            <a key={p.n} href={p.href} className="group flex gap-6 border-b border-[var(--color-crema-200)] py-5 hover:bg-[var(--color-crema-100)]">
               <span className="font-mono text-base text-[var(--color-laton-600)]">{p.n}</span>
               <div>
-                <h3 className="font-[var(--font-display)] text-lg font-medium text-[var(--color-ink)]">{p.puesto}</h3>
+                <h3 className="font-[var(--font-display)] text-lg font-medium text-[var(--color-ink)] group-hover:text-[var(--color-oxido-600)]">{p.puesto}</h3>
                 <p className="mt-1 text-base text-[var(--color-ink-soft)]">{p.desc}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
+
+        <p className="mt-6 max-w-2xl text-base text-[var(--color-ink-soft)]">
+          ¿Quieres conocer mejor el sector antes de enviar tu candidatura? Visita nuestro{' '}
+          <a href="/blog/" className="font-medium text-[var(--color-oxido-600)] hover:underline">blog</a>, con guías sobre mantenimiento, limpieza y gestión de comunidades de vecinos.
+        </p>
 
         <div className="mt-16">
           <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-ink)]">Envía tu candidatura</h2>
