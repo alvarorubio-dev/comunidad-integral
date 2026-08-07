@@ -32,9 +32,15 @@ export default function CookiesPage() {
         </p>
 
         <section className="mt-10">
-          <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-ink)]">1. Este sitio no usa cookies de analítica ni de publicidad</h2>
+          <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-ink)]">1. Analítica web: Umami Analytics (sin cookies)</h2>
           <p className="mt-4 text-base leading-relaxed text-[var(--color-ink-soft)]">
-            Actualmente {SITE.name} no instala cookies de analítica (como Google Analytics), de publicidad ni de seguimiento de ningún tipo. No se recopila información sobre la navegación del usuario con fines estadísticos o publicitarios.
+            {SITE.name} utiliza Umami Analytics para conocer de forma agregada cómo se usa el sitio web (páginas más visitadas, origen del tráfico, dispositivo). Umami es una herramienta de analítica <strong>&quot;cookieless&quot;</strong>: no instala cookies ni ningún otro identificador persistente en el navegador del usuario, no recoge datos personales identificables como la dirección IP y no realiza seguimiento del usuario entre distintos sitios web.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-[var(--color-ink-soft)]">
+            Al no almacenar ni recuperar información en el dispositivo del usuario, este servicio queda fuera del ámbito del artículo 22.2 de la LSSI-CE, que exige consentimiento previo únicamente para el uso de cookies u otras tecnologías de almacenamiento no estrictamente técnicas. Por este motivo, la analítica de este sitio no requiere banner de consentimiento de cookies.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-[var(--color-ink-soft)]">
+            Los datos se procesan en un servidor de la Unión Europea (región EU de Umami Cloud). No se utilizan cookies de publicidad ni de seguimiento de ningún otro tipo en este sitio.
           </p>
         </section>
 
@@ -58,7 +64,7 @@ export default function CookiesPage() {
         <section className="mt-10">
           <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-ink)]">4. Cambios futuros</h2>
           <p className="mt-4 text-base leading-relaxed text-[var(--color-ink-soft)]">
-            Tenemos previsto incorporar en el futuro una herramienta de analítica web respetuosa con la privacidad (como Plausible o Umami), pendiente de implementación en el momento de publicar esta política. En caso de instalarse, esta página se actualizará para informar de las cookies o tecnologías equivalentes utilizadas y, si fuera necesario, se solicitará el consentimiento del usuario mediante un panel de configuración de cookies.
+            Si en el futuro se incorporase alguna cookie de publicidad, de seguimiento entre sitios o cualquier otra tecnología no estrictamente técnica, esta página se actualizará para informarlo y, cuando la normativa lo exija, se solicitará el consentimiento del usuario mediante un panel de configuración de cookies antes de su instalación.
           </p>
         </section>
       </div>
