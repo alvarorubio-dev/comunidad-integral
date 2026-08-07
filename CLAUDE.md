@@ -544,32 +544,49 @@ export const barcelona: Ciudad = {
 Los artículos atacan keywords informacionales de cola larga, generan backlinks
 naturales y enlazan internamente a pillar pages y landings locales.
 
-#### Calendario editorial (primeros 20 artículos)
+#### Calendario editorial (revisado con datos reales de Ubersuggest — agosto 2026)
 
-Publicar 2 artículos por semana. Priorizar por volumen de keyword y relevancia estacional.
+Publicar 2 artículos por semana, 1.500-2.500 palabras. Ordenado por prioridad real
+(volumen de búsqueda × dificultad SEO), no por el orden intuitivo original que se
+usó al planificar el proyecto por primera vez.
 
-| # | Título (H1) | Keyword target | Vol | Enlaza a |
-|---|-------------|---------------|-----|----------|
-| 1 | Guía completa de mantenimiento de comunidades de vecinos | mantenimiento de comunidades | 480 | Pillar mantenimiento |
-| 2 | ¿Cuánto cuesta la limpieza de una comunidad de vecinos? Precios 2026 | precio limpieza comunidad vecinos | 210 | Pillar limpieza |
-| 3 | Cómo elegir empresa de conserjería para tu comunidad | empresa conserjería comunidades | 110 | Pillar conserjería |
-| 4 | ITE obligatoria: qué comunidades deben pasar la inspección técnica | ITE comunidades | 390 | Landings Madrid, Barcelona |
-| 5 | Mantenimiento de piscinas comunitarias: guía completa | mantenimiento piscinas comunidad | 260 | Pillar piscinas |
-| 6 | ¿Qué es el Facility Services? Guía para comunidades | facility services | 880 | Todas las pillar |
-| 7 | Subrogación de trabajadores al cambiar de empresa de limpieza | subrogación limpieza comunidades | 170 | Pillar limpieza |
-| 8 | Reformas en comunidades de vecinos: permisos, precios y plazos | reformas comunidades vecinos | 170 | Pillar reformas |
-| 9 | Convenio colectivo de limpieza de comunidades: lo que debes saber | convenio limpieza comunidades | 140 | Pillar limpieza |
-| 10 | Cómo reducir gastos de mantenimiento en tu comunidad | reducir gastos comunidad | 110 | Pillar mantenimiento |
-| 11 | Limpieza de garajes comunitarios: normativa y precios | limpieza garajes comunidad | 90 | Pillar limpieza |
-| 12 | Mantenimiento de jardines en comunidades: servicios y costes | mantenimiento jardines comunidad | 110 | Pillar jardinería |
-| 13 | ¿Qué hace un conserje de comunidad? Funciones y salario | funciones conserje comunidad | 260 | Pillar conserjería |
-| 14 | Presupuesto de mantenimiento para comunidades: cómo solicitarlo | presupuesto mantenimiento comunidad | 90 | Formulario presupuesto |
-| 15 | Limpieza de portales: frecuencia recomendada y precios | limpieza portales comunidad | 110 | Pillar limpieza |
-| 16 | Control de plagas en comunidades: obligaciones y costes | control plagas comunidad | 170 | Pillar mantenimiento |
-| 17 | Eficiencia energética en comunidades: cómo ahorrar | eficiencia energética comunidad | 140 | Pillar mantenimiento |
-| 18 | ¿Cómo funciona la contratación de servicios en una comunidad? | contratación servicios comunidad | 70 | Marketplace |
-| 19 | Mantenimiento de ascensores en comunidades: obligaciones legales | mantenimiento ascensores comunidad | 210 | Pillar mantenimiento |
-| 20 | Limpieza de fachadas en comunidades: métodos y precios | limpieza fachadas | 140 | Pillar limpieza |
+**Hallazgo clave:** la gran mayoría de estas keywords tienen un pico de búsqueda muy
+fuerte en septiembre (x3-x8 el volumen normal) — las comunidades renuevan contratos
+justo después del verano. Conviene publicar en julio/agosto para llegar indexados a tiempo.
+
+| # | Título | Keyword principal | Vol/mes | SD | Nota |
+|---|--------|-------------------|---------|-----|------|
+| 1 | ITE: qué es y cuándo es obligatoria pasarla | ITE inspección técnica de edificios | 1.900 | 12 | ⭐ Máxima prioridad — volumen alto y constante todo el año, sin estacionalidad |
+| 2 | ¿Qué es el Facility Services? Guía para comunidades | facility services | 1.000 | 11 | ⭐ Migración de post WordPress (antes "beneficios empresa servicios integrales...") |
+| 3 | Mantenimiento de ascensores: normativa y obligaciones | mantenimiento de ascensores | 590 | 11 | ⭐ CPC alto (4,72€), señal de intención comercial fuerte |
+| 4 | Mantenimiento de jardines en comunidades de vecinos | mantenimiento de jardines | 1.900 | 8 | ⭐ Migración de post WordPress (antes "riego por goteo automático", pivotado por bajo volumen/intención transaccional de la keyword original) |
+| 5 | Guía completa de mantenimiento de comunidades | mantenimiento de comunidades | 390 | 8 | Incluye sección sobre presupuestos (fusiona el antiguo artículo "presupuesto de mantenimiento") |
+| 6 | Cómo elegir empresa de conserjería para tu comunidad | empresa de conserjería | 480 | 10 | Pico en septiembre: 1.600. Incluye sección sobre contratación de servicios (fusiona el antiguo "cómo funciona la contratación...") |
+| 7 | Convenio colectivo de limpieza de comunidades | convenio colectivo limpieza de edificios y locales | 320 | 16 | Estable todo el año |
+| 8 | Limpieza de garajes comunitarios: normativa y precios | limpieza de garajes | 320 | 9 | Pico en septiembre: 1.300 |
+| 9 | Limpieza de fachadas en comunidades: métodos y precios | limpieza de fachadas | 320 | 9 | Pico en septiembre: 1.000 |
+| 10 | Limpieza de portales: frecuencia recomendada | limpieza de portales | 210 | 8 | Estable todo el año |
+| 11 | ¿Qué hace un conserje de comunidad? Funciones | funciones de un conserje | 210 | 9 | Estable todo el año |
+| 12 | Control de plagas en tu comunidad: obligaciones | control de plagas | 4.400 | 16 | Término amplio dominado por empresas de fumigación — mencionar como oportunidad secundaria dentro del artículo, no competir de frente por el término genérico |
+| 13 | Presupuesto de limpieza para tu comunidad | presupuesto limpieza comunidad | 70 | 23 | Pico en septiembre: 390 |
+| 14 | Gastos de la comunidad: cómo se reparten | gastos comunidad de propietarios | 30 | 6 | Volumen bajo pero dificultad mínima |
+| 15 | Reformas en comunidades: permisos y mayorías necesarias | reformas comunidades | 40 | 25 | Volumen bajo, dificultad media |
+| 16 | Mantenimiento de piscinas comunitarias: guía completa | mantenimiento de piscinas comunitarias | 40 | 14 | El término amplio "mantenimiento de piscinas" tiene 2.400 vol pero SD 26 (dominado por piscinas privadas) — quedarnos en el nicho específico por ahora |
+| 17 | Eficiencia energética en tu comunidad | eficiencia energética edificios | 260 | 41 | Dificultad alta, prioridad baja — dominado por certificadoras y administraciones |
+| 18 | Certificado energético en comunidades de propietarios | certificado energético edificio | 110 | 39 | Dificultad alta — fusionar contenido con el #17 si el ritmo de publicación lo requiere |
+
+**Artículos descartados del calendario original** (0 volumen de búsqueda sin sustituto viable):
+- "Presupuesto de mantenimiento para comunidades" → contenido fusionado en el artículo #5
+- "¿Cómo funciona la contratación de servicios en una comunidad?" → contenido fusionado en el artículo #6
+
+**Nota sobre "riego por goteo automático":** la keyword literal casi no tiene volumen
+(210 búsquedas) y su intención es transaccional (la gente busca comprar un kit en
+tiendas como Leroy Merlín, no contratar un servicio) — mal encaje para este negocio.
+Por eso el artículo de migración del post antiguo de WordPress sobre este tema se
+reenfocó hacia "mantenimiento de jardines" (1.900 vol, intención informacional
+correcta), incluyendo el riego automático como una sección dentro del artículo en
+vez de como el tema central. Slug actualizado en next.config.ts:
+`/beneficios-riego-goteo-automatico/` → `/blog/mantenimiento-jardines-comunidades/`
 
 #### Estructura de artículo MDX
 
@@ -653,7 +670,7 @@ a sus vecinas formando una malla densa.
                  - Otros artículos relacionados
 ```
 
-#### Reglas de enlazado interno
+### Reglas de enlazado interno
 
 1. Cada pillar page enlaza a TODAS sus landings de ciudad (grid al final)
 2. Cada pillar page enlaza a las otras 5 pillar pages ("Otros servicios")
