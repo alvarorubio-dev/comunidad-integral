@@ -28,6 +28,7 @@ export default function EmpresasPage() {
             Conectamos comunidades de vecinos con empresas verificadas de limpieza, mantenimiento, conserjería, reformas, jardinería y piscinas.
           </p>
           <a href={`mailto:${SITE.email}?subject=${encodeURIComponent('Quiero unirme como empresa')}`}
+            target="_blank" rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-2 bg-[var(--color-oxido-500)] px-7 py-3.5 text-base font-medium text-[var(--color-crema-50)] hover:bg-[var(--color-oxido-600)]">
             Quiero recibir leads <span aria-hidden="true">→</span>
           </a>
@@ -52,6 +53,7 @@ export default function EmpresasPage() {
           <h2 className="font-[var(--font-display)] text-2xl font-medium text-[var(--color-crema-50)]">¿Tu empresa quiere formar parte de la red?</h2>
           <p className="mt-3 text-base text-[var(--color-crema-100)]">Escríbenos y te damos acceso al registro de empresas.</p>
           <a href={`mailto:${SITE.email}?subject=${encodeURIComponent('Quiero unirme como empresa')}`}
+            target="_blank" rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 bg-[var(--color-crema-50)] px-8 py-3.5 text-base font-medium text-[var(--color-oxido-600)]">
             Contactar <span aria-hidden="true">→</span>
           </a>

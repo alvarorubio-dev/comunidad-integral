@@ -41,7 +41,7 @@ export default function ContactoPage() {
                   <div>
                     <p className="font-mono text-base uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">{d.label}</p>
                     {d.href ? (
-                      <a href={d.href} className="mt-1 block text-base text-[var(--color-ink)] hover:text-[var(--color-oxido-600)]">{d.valor}</a>
+                      <a href={d.href} {...(d.href.startsWith('mailto:') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="mt-1 block text-base text-[var(--color-ink)] hover:text-[var(--color-oxido-600)]">{d.valor}</a>
                     ) : (
                       <p className="mt-1 text-base text-[var(--color-ink)]">{d.valor}</p>
                     )}
