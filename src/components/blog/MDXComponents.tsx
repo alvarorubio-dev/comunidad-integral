@@ -3,6 +3,7 @@ import type { MDXComponents } from 'mdx/types';
 import { getServicio } from '@/content/servicios';
 import { getCiudad } from '@/content/ciudades';
 import { slugify } from '@/lib/utils/slugify';
+import { UmbralITEDiagram } from './UmbralITEDiagram';
 
 function textContent(node: ReactNode): string {
   if (typeof node === 'string') return node;
@@ -140,4 +141,5 @@ export const mdxComponents: MDXComponents = {
   CiudadesPrecios,
   CTAPresupuesto,
   FAQSection,
+  UmbralITEDiagram,
 };
