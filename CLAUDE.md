@@ -737,10 +737,29 @@ a sus vecinas formando una malla densa.
 
 ---
 
-## Base de datos Supabase (schema inicial)
+## Base de datos Supabase (schema real)
+
+> **`supabase/migrations/*.sql` es SIEMPRE la fuente de verdad del schema real
+> ejecutado en Supabase — no esta sección.** Esta sección es documentación de
+> referencia rápida y puede quedar desalineada si se ejecuta una migración sin
+> actualizarla aquí. Antes de escribir una query contra estas tablas (sobre
+> todo desde código server-side con la service_role key, que no está sujeto a
+> RLS y por tanto no falla en tiempo de desarrollo por una política mal
+> puesta), revisa el `.sql` correspondiente en `supabase/migrations/`:
+> - `001_initial_schema.sql` — `leads`, `candidatos`
+> - `002_storage_cvs_policies.sql` — políticas del bucket `cvs`
+> - `003_empresas.sql` — `empresas`
+> - `004_grant_admin_select.sql` — GRANT SELECT a `service_role` (necesario
+>   además de RLS: el rol se salta las políticas RLS, pero Postgres sigue
+>   exigiendo el GRANT a nivel de tabla; sin él da 42501 "permission denied")
+>
+> Un desalineamiento real ya causó un bug: el panel `/admin/` se escribió
+> contra el schema conceptual de esta sección (`candidatos.activo`,
+> `empresas.plan`) y falló porque esas columnas nunca se crearon con esos
+> nombres — el schema real es el de abajo, verificado contra las migraciones.
 
 ```sql
--- Leads (solicitudes de presupuesto)
+-- Leads (solicitudes de presupuesto) — 001_initial_schema.sql
 CREATE TABLE leads (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at TIMESTAMPTZ DEFAULT now(),
@@ -753,30 +772,26 @@ CREATE TABLE leads (
   servicios TEXT[] DEFAULT '{}',
   descripcion TEXT,
   urgencia TEXT DEFAULT 'media',
-  documento_url TEXT,
   fuente TEXT DEFAULT 'web',
-  estado TEXT DEFAULT 'nuevo',
-  valor_estimado NUMERIC,
-  notas TEXT
+  estado TEXT DEFAULT 'nuevo'
 );
 
--- CVs (candidatos)
+-- CVs (candidatos) — 001_initial_schema.sql
 CREATE TABLE candidatos (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at TIMESTAMPTZ DEFAULT now(),
   nombre TEXT NOT NULL,
   email TEXT NOT NULL,
   telefono TEXT,
-  puesto TEXT,
+  puesto TEXT NOT NULL,
   experiencia TEXT,
   zona TEXT,
   disponibilidad TEXT,
-  cv_url TEXT,
   descripcion TEXT,
-  activo BOOLEAN DEFAULT true
+  cv_url TEXT
 );
 
--- Empresas (marketplace)
+-- Empresas (marketplace) — 003_empresas.sql
 CREATE TABLE empresas (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at TIMESTAMPTZ DEFAULT now(),
@@ -786,19 +801,20 @@ CREATE TABLE empresas (
   telefono TEXT,
   servicios TEXT[] DEFAULT '{}',
   ciudades TEXT[] DEFAULT '{}',
-  verificada BOOLEAN DEFAULT false,
-  plan TEXT DEFAULT 'basico',
   descripcion TEXT,
-  logo_url TEXT
-);
-
--- Blog (metadatos, el contenido está en MDX)
-CREATE TABLE blog_views (
-  slug TEXT PRIMARY KEY,
-  views INTEGER DEFAULT 0,
-  updated_at TIMESTAMPTZ DEFAULT now()
+  verificada BOOLEAN DEFAULT false,
+  estado TEXT DEFAULT 'pendiente'
 );
 ```
+
+Ambas tablas (`leads`, `candidatos`, `empresas`) tienen RLS activado con una
+única policy de `INSERT` para el rol `anon` — nadie puede leer, modificar ni
+borrar desde el navegador. Las lecturas (panel `/admin/`) van por
+`src/lib/supabase/admin.ts` con la service_role key.
+
+`blog_views` (métricas de vistas por artículo) es una tabla **conceptual**
+de una fase de planificación posterior: todavía no tiene migración ejecutada
+en `supabase/migrations/`. No asumas que existe hasta que se cree su `.sql`.
 
 ---
 
